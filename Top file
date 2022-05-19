@@ -1,1 +1,460 @@
+Data analysis assignment Trump-Approval rating 
+
+According to the assignment instructions I am trying to assign Trump approval rating election time with data and these datas are reflect the people voting during the election period.
+
+Background
+
+Donald Trump is leaving office with the lowest approval rating of not just his presidency. In his latest and last poll from Gallup, only 34% of Americans approve of Trump's job performance, a personal low for him and nearly the lowest approval rating for any existing president since the inception of polling.
+While technically not the lowest-rated exiting president, Trump hit some other milestones of unpopularity that I think definitely qualify him for the title of most disliked.
+Almost every president sees a boost to their approval rating during their lame duck period the time after losing an election and the next president's inauguration but not Trump! His rating fell by an incredible 12 points. That creates a fitting sort of bookend for his time in office, actually, since he also never got the traditional honeymoon period of a ratings boost following his 2016 election.
+Getting our data from the FEC
+ 
+The federal Election Commission releases the voting result in every election and according to this I support Trump approval rating based on data.
+
+ Import configs as cfg 
+from FECFile import Socrata
+
+If you want to look at the data, you can review this website. https://projects.fivethirtyeight.com/trump-approval-ratings/
+
+By using this data we tried to construct the polls to query
+
+Data_url =”data.fec.gov”
+data_set=”fec_API
+
+App_given = cfg.given
+given =Socrata(data_url, app_given)
+There is a lot of datas are given by the federal election commission but in this topic we will review some of them that relates to the Trump election.
+
+Count = polls.get(data_set, select=”COUNT(*)”)
+print(count)
+
+[{‘COUNT’: ‘1500’
+A Sample of 1500 people are give their vote to trump on one station and to get more we have to request more time
+
+Import pandas as pd
+
+Start = 0
+Block 1500
+Results = [ ]
+While start < int(count[0][‘COUNT’] ):
+results.extend(voter.get(data_set, data, restrict=ended))
+
+df  =pd.Dataframe.from_collected(results)
+
+df  .to_csv(“pollsdata.csv”)
+
+The DataSet For Trump approval and Disapprove 
+
+The dataSet is given from the federal Election commission and I pulled the database  from the given data. According to these polls some of them elect Trump and some of them do not elect him.
+
+The main purpose of this data is to show how people elect their presidents during the election period.
+
+df=pf.read_csv(“pollsdata.csv”)
+print(df.rows.tolist())
+
+
+
+DAY 1,46238.6%Approve38.6%Approve57.9%Disapprove 57.9%Disapprove
+All pollsPolls of likely or registered votersPolls of adults
+All polls
+ 
+ 
+ 
+ 
+dates dddd
+POLLSTER
+GRADE
+SAMPLE
+WEIGHT
+APPROVE
+DISAPPROVE
+ 
+ADJUSTED
+ 
+JAN. 16-19
+YouGov
+B
+1,500
+A
+0.76
+42%
+53%
+ 
+43%
+55%
+ 
+JAN. 16-19
+American Research Group
+B
+1,100
+A
+1.40
+30%
+66%
+ 
+33%
+63%
+ 
+JAN. 15-19
+AtlasIntel
+B/C
+5,188
+A
+1.48
+45%
+54%
+ 
+43%
+54%
+ 
+JAN. 14-18
+Rasmussen Reports/Pulse Opinion Research
+C+
+1,500
+LV
+0.88
+51%
+48%
+ 
+46%
+50%
+ 
+JAN. 15-17
+Morning Consult
+B/C
+1,993
+RV
+0.08
+39%
+58%
+ 
+39%
+59%
+ 
+JAN. 15-17
+Quinnipiac University
+B+
+1,131
+RV
+1.35
+34%
+61%
+ 
+36%
+60%
+ 
+JAN. 13-15
+YouGov
+B
+2,166
+A
+0.96
+41%
+59%
+ 
+42%
+61%
+ 
+JAN. 12-15
+Suffolk University
+A
+1,000
+RV
+1.76
+41%
+54%
+ 
+40%
+54%
+ 
+JAN. 4-15
+Gallup
+B
+1,023
+A
+1.37
+34%
+62%
+ 
+35%
+61%
+ 
+JAN. 12-14
+Harris Poll
+C
+2,006
+RV
+0.54
+47%
+53%
+ 
+43%
+52%
+ 
+JAN. 12-14
+Morning Consult
+B/C
+2,200
+A
+0.06
+34%
+60%
+ 
+34%
+61%
+ 
+JAN. 9-14
+CNN/SSRS
+B/C
+1,003
+A
+1.29
+34%
+62%
+ 
+35%
+61%
+ 
+JAN. 11-13
+Marist College
+A+
+1,173
+A
+2.05
+38%
+57%
+ 
+39%
+58%
+ 
+JAN. 10-13
+ABC News/The Washington Post
+A+
+1,002
+A
+2.13
+38%
+60%
+ 
+39%
+59%
+ 
+JAN. 10-13
+NBC News/The Wall Street Journal
+A-
+1,000
+RV
+1.65
+43%
+55%
+ 
+42%
+56%
+ 
+JAN. 10-12
+YouGov
+B
+1,500
+A
+0.67
+39%
+55%
+ 
+40%
+57%
+ 
+JAN. 10-12
+Rasmussen Reports/Pulse Opinion Research
+C+
+1,500
+LV
+0.53
+46%
+53%
+ 
+41%
+55%
+ 
+JAN. 8-12
+Pew Research Center
+B/C
+5,630
+A
+1.80
+29%
+68%
+ 
+31%
+64%
+ 
+JAN. 8-12
+Ipsos
+B-
+1,399
+A
+0.93
+34%
+61%
+ 
+35%
+60%
+ 
+JAN. 6-12
+Morning Consult
+B/C
+31,920
+RV
+1.01
+36%
+57%
+ 
+36%
+58%
+ 
+JAN. 8-11
+Morning Consult
+B/C
+1,996
+RV
+0.04
+34%
+63%
+ 
+34%
+64%
+ 
+JAN. 8-11
+HarrisX
+C
+2,854
+RV
+0.68
+44%
+56%
+ 
+40%
+55%
+ 
+JAN. 8-11
+Global Strategy Group/GBAO (Navigator Research)
+ 
+1,000
+RV
+0.83
+36%
+61%
+ 
+37%
+59%
+ 
+JAN. 8-11
+Morning Consult
+B/C
+2,200
+A
+0.04
+35%
+61%
+ 
+35%
+62%
+ 
+JAN. 9-10
+Data for Progress
+B-
+1,129
+LV
+1.21
+42%
+58%
+ 
+41%
+58%
+
+Show more polls
+KEY
+= NEW
+A = ALL ADULTS
+RV = REGISTERED VOTERS
+V = VOTERS
+LV = LIKELY VOTERS
+ 
+
+Based on the given information we can count the polls by date and inserting those polls into dataframe
+
+Import numpy as np # for arrange 
+
+Fy2020 = pd.read_csv(“Avgpolls.csv”)
+
+Dates = pd.date_range(begin=’2020-11-13’, end=’2020-12-15’).strftime(‘%Y-%m-%d’)
+Days = np.arange(11, 13)
+AvgPolls = pd.DataPolls(data = dates, rows = [‘dates’])
+Polls =[ ]
+For X in days:
+polls.append(fy2020[fy2020[‘date’] ==AvgPolls.iloc[x, 0] ] ) )
+AvgCounts[‘counts’] = counts
+
+Dates    Polls
+
+Jun 2020-11-13    1500
+Jan 2020-10-13    1002
+Oct 2020-6-9    1014
+Sep 2020-21-24  1008
+Aug 2020-12-15   1001
+
+Based on this data we will portion the database
+Average and std for June and starting( time from 11-13)
+ avg and std for october ( start time from 6-9 and 21-24)
+JuneP = AvgCounts[
+((AvgCounts[‘dates’ ] >= “2020-11-13”) 
+((avgCounts[ ‘dates ‘]<= “2020-10-13”)
+
+JanuaryP =avg Counts[
+(avgCounts[ ‘dates’] >= “2020-6-9”
+(avgCounts[ ‘ dates] <= 2020-21-24”)
+jN = len(JuneP) 
+oN len(octoberP)
+jAvg = JuneP[“Counts”]. mean()
+jSTD = JuneP[“Counts”]. std()
+oAvg = OctoberP[“Counts”]. mean()
+oSTD = OctoberP[“Counts”]. std()
+print(jAvg, jSTD, oAvg, oSTD)
+
+
+Statistics
+
+By  considering the given poll results people are not more likely to vote Trump in June with 53% disapprove and 42% approve in 2020 based on the given information. We hypothesize by using these samples one being the amount of people who approve in June and  on the other side people who disapprove of Trump. 
+
+To identify null and alternative hypothesis 
+                                         Ho :  μj =μoHa : μj > μo
+
+Find the following t-statistic   
+t =shown in an earlier section with normal distribution. The formula for the 
+t=x-μ/s/root n 
+df = nj + no-2
+t
+-statistic is
+where 
+x¯
+ is the sample mean, 
+s
+ is the sample standard deviation, and 
+n
+ is the sample size.
+tstat =  (jAvg -oAvg)/((jSTD**2 / jN) + (oSTD**2 / oN))**(0.5)
+print(tstat, df)
+ 
+Here we can calculate t values by using the formula
+Import matplotlib.pyplot as pIt
+Import scipy.stats as st
+Results = st.ttest_ind(JuneP[“Polls”], OctoberP[“Polls”], equal_var=False, alternative=’less’
+T_dist = st.t(x)
+T_x = np.linspace(x1, x2, x3)
+Pdf_vals = t_dist.pdf(t_x)
+plt.fill_between(t_x, pdf-vals, x1 where = t_x>tstat, color =’B’)
+plt.plot(t_x1, pdf_vals)
+pIt.xlabel(‘ t statistic’)
+print(results.p value)
+According to this information we can get the p value from the table by using the formula. These are some of Trump election results with statistics.
+
 
